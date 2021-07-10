@@ -31,42 +31,194 @@ class _HomeState extends State<Home> {
         ],
       ),
     
-      body: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        children: <Widget>[
+          Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 38, 0),
-              child: Text('TV Shows',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15
-                ),
+            Text('TV Shows',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+                fontSize: 15
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 38, 0),
-              child: Text('Movies',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15
-                ),
+            Text('Movies',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+                fontSize: 15
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 38, 0),
-              child: Text('My List',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15
-                ),
+            Text('My List',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+                fontSize: 15
               ),
             ),
           ],
         ),
+        
+        SizedBox(
+          height: 30,
+        ),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Continue Watching for Gautam',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 25
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+
+            Container(
+              height: 100,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Container(
+                    width: 160,
+                    color: Colors.red,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.green,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+                  
+                  Container(
+                    width: 160,
+                    color: Colors.blue,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.red,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.green,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 30,
+        ),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Trending Now',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 25
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+
+            Container(
+              height: 100,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Container(
+                    width: 160,
+                    color: Colors.red,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.green,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+                  
+                  Container(
+                    width: 160,
+                    color: Colors.blue,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.red,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    width: 160,
+                    color: Colors.green,
+                  ),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+                  
+                  Container(
+                    width: 160,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
+        ],
       ),
     );
   }
