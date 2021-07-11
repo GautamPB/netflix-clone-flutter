@@ -9,11 +9,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  CategoryClass category = new CategoryClass(
+  List<CategoryClass> genres = [
+    CategoryClass(
         category: 'Trending',
-        url: '/trending/all/week?api_key=964cbc730fb8dc2d38d1c0b3520130d1&language=en-US');
-  void getMovies() {
-    category.getData();
+        url:
+            '/trending/all/week?api_key=964cbc730fb8dc2d38d1c0b3520130d1&language=en-US'),
+    // CategoryClass(
+    //     category: 'Top Rated',
+    //     url:
+    //         '/movie/top_rated?api_key=964cbc730fb8dc2d38d1c0b3520130d1&language=en-US'),
+  ];
+
+  // CategoryClass category = new CategoryClass(
+  //     category: 'Trending',
+  //     url:
+  //         '/trending/all/week?api_key=964cbc730fb8dc2d38d1c0b3520130d1&language=en-US');
+  void getMovies() async {
+    for (var i = 0; i < genres.length; i++) {
+      await genres[i].getData();
+      print('Movie data: ${genres[i].results}');
+    }
+    // await category.getData();
+    // print('${category.data["results"]}');
   }
 
   @override
@@ -78,77 +95,117 @@ class _HomeState extends State<Home> {
           SizedBox(
             height: 30,
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Continue Watching for Gautam',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 25),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 100,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
+
+          ListView.builder(
+              itemCount: genres.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Text(
+                        '${genres[index].category}',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 25),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/original/keIxh0wPr2Ymj0Btjh4gW7JJ89e.jpg',
-                          width: 160,
-                          height: 100,
+                        height: 100,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: genres[index].dataLength,
+                          itemBuilder: (context, position) {
+                            return Container(
+                              child: Image.network(
+                                'https://image.tmdb.org/t/p/original${genres[index].results[position].backdrop_path}',
+                                width: 160,
+                                height: 100,
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 160,
-                        color: Colors.green,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 160,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 160,
-                        color: Colors.red,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 160,
-                        color: Colors.green,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 160,
-                        color: Colors.blue,
-                      ),
+                      )
                     ],
                   ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
+                );
+              }),
+
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Text(
+          //         'Continue Watching for Gautam',
+          //         style: TextStyle(
+          //             color: Colors.white,
+          //             fontWeight: FontWeight.w500,
+          //             fontSize: 25),
+          //       ),
+          //       SizedBox(
+          //         height: 10,
+          //       ),
+          //       Container(
+          //         height: 100,
+          //         child: ListView(
+          //           scrollDirection: Axis.horizontal,
+          //           children: <Widget>[
+          //             Container(
+          //               child: Image.network(
+          //                 'https://image.tmdb.org/t/p/original/keIxh0wPr2Ymj0Btjh4gW7JJ89e.jpg',
+          //                 width: 160,
+          //                 height: 100,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               width: 10,
+          //             ),
+          //             Container(
+          //               width: 160,
+          //               color: Colors.green,
+          //             ),
+          //             SizedBox(
+          //               width: 10,
+          //             ),
+          //             Container(
+          //               width: 160,
+          //               color: Colors.blue,
+          //             ),
+          //             SizedBox(
+          //               width: 10,
+          //             ),
+          //             Container(
+          //               width: 160,
+          //               color: Colors.red,
+          //             ),
+          //             SizedBox(
+          //               width: 10,
+          //             ),
+          //             Container(
+          //               width: 160,
+          //               color: Colors.green,
+          //             ),
+          //             SizedBox(
+          //               width: 10,
+          //             ),
+          //             Container(
+          //               width: 160,
+          //               color: Colors.blue,
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 30,
+          // ),
         ],
       ),
     );
